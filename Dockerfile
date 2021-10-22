@@ -2,6 +2,8 @@ ARG SCYLLA_VER=3.3.4-202006160528
 
 FROM scylladb/scylla:${SCYLLA_VER}
 
+
+
 ADD scylla_dev_mode_setup /opt/scylladb/scripts/scylla_dev_mode_setup
 ADD supervisord.conf /etc/supervisord.conf
 RUN chgrp -R 0 / && chmod -R g=u / && \
@@ -13,3 +15,7 @@ RUN chgrp -R 0 / && chmod -R g=u / && \
     chgrp -R 0 /var/lib/scylla/hints/ && chmod -R g=u /var/lib/scylla/hints/ && \ 
     rm -rf /etc/supervisord.conf.d/sshd-server.conf
 RUN chmod -R 777 /opt/scylladb/scripts/scylla_dev_mode_setup
+
+RUN mkdir /opt/scylladb/scylla
+WORKDIR  /opt/scylladb/scylla
+RUN cp /* /opt/scylladb/scylla/
