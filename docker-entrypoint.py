@@ -24,7 +24,6 @@ try:
     setup.developerMode()
     setup.cpuSet()
     setup.io()
-    setup.cqlshrc()
     setup.arguments()
     supervisord = subprocess.Popen(["/usr/bin/supervisord", "-c",  "/etc/supervisord.conf"])
     supervisord.wait()
