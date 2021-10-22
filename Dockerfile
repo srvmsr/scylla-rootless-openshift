@@ -6,8 +6,7 @@ FROM scylladb/scylla:${SCYLLA_VER}
 
 ADD scylla_dev_mode_setup /opt/scylladb/scripts/scylla_dev_mode_setup
 ADD supervisord.conf /etc/supervisord.conf
-RUN chgrp -R 0 / && chmod -R g=u / && \
-    chgrp -R 0 /opt/scylladb && chmod -R g=u /opt/scylladb && \
+RUN chgrp -R 0 /opt/scylladb && chmod -R g=u /opt/scylladb && \
     chgrp -R 0 /opt/scylladb/scripts && chmod -R g=u /opt/scylladb/scripts &&\
     chgrp -R 0 /etc/scylla.d && chmod -R g=u /etc/scylla.d && \
     chgrp -R 0 /etc/ssh && chmod -R g=u /etc/ssh && \
