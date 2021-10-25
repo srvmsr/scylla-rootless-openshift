@@ -7,7 +7,7 @@ doesn't require root permissions to run.
 
 ##Try out the docker image
 ```bash
-docker pull srvmsr/scylla-ocp:tagname:3.3.4
+docker pull srvmsr/scylla-ocp:3.3.4
 ```
 
 ## Openshift Deployment with emptydir

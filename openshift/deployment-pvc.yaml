@@ -22,7 +22,7 @@ spec:
             claimName: scylla
       containers:
         - name: scylla-rootless
-          image: 'srvmsr/scylla-ocp:tagname:3.3.4'
+          image: 'srvmsr/scylla-ocp:3.3.4'
           volumeMounts:
             - name: scylla
               mountPath: /var/lib/jenkins
@@ -42,3 +42,16 @@ spec:
       storage: 10Gi
 #  storageClassName: gp2       #change this to the according to your cluster
   volumeMode: Filesystem
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scylla
+  labels:
+    app: scylla-rootless
+spec:
+  selector:
+    app: scylla-rootless
+  ports:
+    - protocol: TCP
+      port: 9042

@@ -20,10 +20,25 @@ spec:
           emptydir: {}
       containers:
         - name: scylla-rootless
-          image: 'srvmsr/scylla-ocp:tagname:3.3.4'
+          ports:
+            - containerPort: 9042
+          image: 'srvmsr/scylla-ocp:3.3.4'
           volumeMounts:
             - name: scylla
               mountPath: /opt/scylladb/scylla/data
           terminationMessagePolicy: File
           imagePullPolicy: Always
       restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scylla
+  labels:
+    app: scylla-rootless
+spec:
+  selector:
+    app: scylla-rootless
+  ports:
+    - protocol: TCP
+      port: 9042
