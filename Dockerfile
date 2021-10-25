@@ -5,7 +5,6 @@ FROM scylladb/scylla:${SCYLLA_VER}
 
 RUN mkdir /opt/scylladb/scylla
 WORKDIR  /opt/scylladb/scylla
-RUN mkdir -p hints view_hints commitlog data
 
 ADD scylla.yaml /etc/scylla/scylla.yaml
 ADD scylla_dev_mode_setup /opt/scylladb/scripts/scylla_dev_mode_setup
