@@ -5,7 +5,7 @@ A stripped version of the [original Scylla Docker image][scylla-docker].
 This image is compatible with OpenShift/OKD and
 doesn't require root permissions to run.
 
-##Try out the docker image
+## Try out the docker image 
 ```bash
 docker pull srvmsr/scylla-ocp:tagname:3.3.4
 ```
