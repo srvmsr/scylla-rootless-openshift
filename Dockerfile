@@ -17,4 +17,4 @@ RUN chmod -R 777 /opt/scylladb/scripts/scylla_dev_mode_setup
 
 RUN mkdir /opt/scylladb/scylla
 WORKDIR  /opt/scylladb/scylla
-RUN rsync -vt /* /opt/scylladb/scylla/
+RUN cp /* /opt/scylladb/scylla/ || true
