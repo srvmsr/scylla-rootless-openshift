@@ -1,6 +1,6 @@
 ARG SCYLLA_VER=3.3.4-202006160528
 
-FROM scylladb/scylla:${SCYLLA_VER}
+FROM docker.artifactory.dhl.com/scylladb/scylla:${SCYLLA_VER}
 
 
 RUN mkdir /opt/scylladb/scylla
@@ -17,8 +17,9 @@ RUN chgrp -R 0 /opt/scylladb && chmod -R goa=rwx /opt/scylladb && \
     chgrp -R 0 /etc/ssh && chmod -R goa=rwx /etc/ssh && \
     chgrp -R 0 /var/lib/scylla* && chmod -R goa=rwx /var/lib/scylla* && \ 
     rm -rf /etc/supervisord.conf.d/sshd-server.conf
-RUN chmod -R 777 /opt/scylladb/scripts/scylla_dev_mode_setup /etc/scylla/scylla.yaml 
-
+RUN chmod  777 /opt/scylladb/scripts/scylla_dev_mode_setup 
+RUN chmod 777 /etc/scylla/scylla.yaml 
+RUN ln -s  /opt/scylladb/python3/bin/python3 /usr/bin/python3
 RUN cp /* /opt/scylladb/scylla/ || true
 ENV HOME='/opt/scylladb/scylla'
 USER 10001
