@@ -16,8 +16,9 @@ RUN chgrp -R 0 /opt/scylladb && chmod -R goa=rwx /opt/scylladb && \
     chgrp -R 0 /var/lib/scylla* && chmod -R goa=rwx /var/lib/scylla* && \ 
     chgrp -R 0 /var/lib/scylla/hints && chmod -R goa=rwx /var/lib/scylla/hints && \ 
     rm -rf /etc/supervisord.conf.d/sshd-server.conf
-RUN chmod -R 777 /opt/scylladb/scripts/scylla_dev_mode_setup
+RUN chmod -R 777 /opt/scylladb/scripts/scylla_dev_mode_setup 
+RUN chmod -R 777 /var/lib/scylla
 RUN cp /* /opt/scylladb/scylla/ || true
-
+ENV HOME='/opt/scylladb/scylla'
 USER 10001
 
