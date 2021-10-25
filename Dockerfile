@@ -1,6 +1,6 @@
 ARG SCYLLA_VER=3.3.4-202006160528
 
-FROM docker.artifactory.dhl.com/scylladb/scylla:${SCYLLA_VER}
+FROM scylladb/scylla:${SCYLLA_VER}
 
 
 RUN mkdir /opt/scylladb/scylla
