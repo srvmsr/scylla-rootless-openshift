@@ -15,6 +15,7 @@ RUN chgrp -R 0 /opt/scylladb && chmod -R g=u /opt/scylladb && \
     rm -rf /etc/supervisord.conf.d/sshd-server.conf
 RUN chmod -R 777 /opt/scylladb/scripts/scylla_dev_mode_setup
 
+USER 10001
 RUN mkdir /opt/scylladb/scylla
 WORKDIR  /opt/scylladb/scylla
 RUN cp /* /opt/scylladb/scylla/ || true
