@@ -14,7 +14,6 @@ RUN chgrp -R 0 /opt/scylladb && chmod -R goa=rwx /opt/scylladb && \
     chgrp -R 0 /opt/scylladb/scripts && chmod -R goa=rwx /opt/scylladb/scripts &&\
     chgrp -R 0 /etc/scylla.d && chmod -R goa=rwx /etc/scylla.d && \
     chgrp -R 0 /etc/ssh && chmod -R goa=rwx /etc/ssh && \
-    chgrp -R 0 /var/lib/scylla* && chmod -R goa=rwx /var/lib/scylla* && \ 
     rm -rf /etc/supervisord.conf.d/sshd-server.conf
 RUN chmod  777 /opt/scylladb/scripts/scylla_dev_mode_setup 
 RUN chmod 777 /etc/scylla/scylla.yaml 

@@ -1,0 +1,44 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: scylla-rootless
+  labels:
+    app: scylla-rootless
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scylla-rootless
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: scylla-rootless
+        deploymentconfig: scylla-rootless
+    spec:
+      volumes:
+        - name: scylla
+          persistentVolumeClaim:
+            claimName: scylla
+      containers:
+        - name: scylla-rootless
+          image: 'srvmsr/scylla-ocp:tagname:3.3.4'
+          volumeMounts:
+            - name: scylla
+              mountPath: /var/lib/jenkins
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: scylla
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+#  storageClassName: gp2       #change this to the according to your cluster
+  volumeMode: Filesystem
