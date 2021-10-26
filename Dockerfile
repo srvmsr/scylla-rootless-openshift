@@ -1,7 +1,6 @@
-ARG SCYLLA_VER=3.3.4-202006160528
+ARG SCYLLA_VER=4.4.4
 
-FROM scylladb/scylla:${SCYLLA_VER}
-
+FROM  scylladb/scylla:${SCYLLA_VER}
 
 RUN mkdir /opt/scylladb/scylla
 WORKDIR  /opt/scylladb/scylla

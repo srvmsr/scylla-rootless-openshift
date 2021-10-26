@@ -22,12 +22,12 @@ spec:
         - name: scylla-rootless
           ports:
             - containerPort: 9042
-          image: 'srvmsr/scylla-ocp:3.3.4'
+          image: 'srvmsr/scylla-ocp:4.4.4'
           volumeMounts:
             - name: scylla
               mountPath: /opt/scylladb/scylla/data
           terminationMessagePolicy: File
-          imagePullPolicy: Always
+          imagePullPolicy: Always         
       restartPolicy: Always
 ---
 apiVersion: v1
